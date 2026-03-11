@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zh">
-
 <head>
 
 <meta charset="UTF-8">
@@ -19,7 +18,7 @@ padding:40px;
 }
 
 .container{
-max-width:520px;
+max-width:600px;
 margin:auto;
 }
 
@@ -43,9 +42,15 @@ border-radius:10px;
 cursor:pointer;
 }
 
-img{
-width:100%;
+.grid{
 margin-top:30px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+.grid img{
+width:100%;
 border-radius:10px;
 }
 
@@ -61,13 +66,13 @@ border-radius:10px;
 
 <p>输入菜名生成食材参考图</p>
 
-<input id="dish" placeholder="例如：宫保鸡丁">
+<input id="dish" placeholder="例如：鱼香肉丝">
 
 <br>
 
-<button onclick="generate()">生成图片</button>
+<button onclick="generate()">生成食材</button>
 
-<div id="result"></div>
+<div class="grid" id="result"></div>
 
 </div>
 
@@ -75,16 +80,28 @@ border-radius:10px;
 
 function generate(){
 
-let dish=document.getElementById("dish").value
+let ingredients=[
+"garlic",
+"chili",
+"ginger",
+"green onion",
+"soy sauce",
+"eggplant",
+"pork",
+"chicken"
+]
 
-let url="https://picsum.photos/800/600?random="+Math.random()
+let html=""
 
-document.getElementById("result").innerHTML="<img src='"+url+"'>"
+ingredients.forEach(i=>{
+html+=`<img src="https://source.unsplash.com/400x400/?${i},food">`
+})
+
+document.getElementById("result").innerHTML=html
 
 }
 
 </script>
 
 </body>
-
 </html>
