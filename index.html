@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI菜单生成器</title>
+
+<style>
+body{
+font-family:Arial;
+background:#f4f4f4;
+text-align:center;
+padding:40px;
+}
+
+.container{
+background:white;
+padding:30px;
+border-radius:12px;
+max-width:420px;
+margin:auto;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+input{
+width:80%;
+padding:12px;
+margin-top:10px;
+border:1px solid #ccc;
+border-radius:8px;
+}
+
+button{
+margin-top:15px;
+padding:12px 20px;
+background:#4CAF50;
+color:white;
+border:none;
+border-radius:8px;
+font-size:16px;
+}
+
+#result{
+margin-top:20px;
+white-space:pre-line;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>AI美食海报生成器</h2>
+
+<p>输入菜名生成AI图片提示词</p>
+
+<input id="dish" placeholder="例如：宫保鸡丁">
+
+<br>
+
+<button onclick="generate()">生成</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+function generate(){
+
+let dish=document.getElementById("dish").value
+
+let calories=Math.floor(Math.random()*200+400)
+
+let allergy=["Soy","Gluten","Peanut","Egg","Shellfish"]
+
+let randomAllergy=allergy[Math.floor(Math.random()*allergy.length)]
+
+let text=
+"菜名："+dish+
+"\n\n热量："+calories+" kcal"+
+"\n\n过敏源："+randomAllergy+
+"\n\nAI图片提示词："+
+"\nProfessional food photography of "+dish
+
+document.getElementById("result").innerText=text
+
+}
+
+</script>
+
+</body>
+</html>
