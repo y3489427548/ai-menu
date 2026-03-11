@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -48,6 +50,7 @@ border-radius:10px;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -70,33 +73,18 @@ border-radius:10px;
 
 <script>
 
-function translateDish(name){
-
-if(name.includes("鸡")) return "chicken chinese food ingredients"
-
-if(name.includes("牛")) return "beef chinese food ingredients"
-
-if(name.includes("鱼")) return "fish chinese food ingredients"
-
-if(name.includes("肉")) return "pork chinese food ingredients"
-
-return "chinese food ingredients"
-
-}
-
 function generate(){
 
 let dish=document.getElementById("dish").value
 
-let keyword=translateDish(dish)
+let url="https://picsum.photos/800/600?random="+Math.random()
 
-let url="https://source.unsplash.com/800x600/?"+keyword
-
-document.getElementById("result").innerHTML='<img src="'+url+'">'
+document.getElementById("result").innerHTML="<img src='"+url+"'>"
 
 }
 
 </script>
 
 </body>
+
 </html>
