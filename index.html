@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>AI 菜品参考图</title>
 
 <style>
@@ -49,7 +47,6 @@ border-radius:10px;
 }
 
 </style>
-
 </head>
 
 <body>
@@ -58,7 +55,7 @@ border-radius:10px;
 
 <h1>AI 菜品参考图</h1>
 
-<p>输入菜名生成参考图</p>
+<p>输入菜名生成食材参考图</p>
 
 <input id="dish" placeholder="例如：宫保鸡丁">
 
@@ -76,21 +73,11 @@ function generate(){
 
 let dish=document.getElementById("dish").value
 
-let prompt = `
-exploded ingredients chinese dish ${dish},
-black background food photography,
-ingredients floating in layers,
-top chili,
-garlic,
-ginger,
-main ingredient ${dish},
-finished dish bottom
-`
+let prompt = "Chinese food " + dish + ", ingredients exploded view, black background food photography"
 
-let url = "https://image.pollinations.ai/prompt/" + encodeURIComponent(prompt)
+let url="https://source.unsplash.com/800x600/?"+encodeURIComponent(dish)
 
-document.getElementById("result").innerHTML =
-'<img src="'+url+'" />'
+document.getElementById("result").innerHTML='<img src="'+url+'">'
 
 }
 
