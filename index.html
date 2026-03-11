@@ -1,13 +1,15 @@
+57281"}
 <!DOCTYPE html>
 <html lang="zh">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI菜单生成器</title>
+<title>AI美食海报生成器</title>
 
 <style>
+
 body{
-font-family:Arial;
+font-family: Arial, sans-serif;
 background:#f4f4f4;
 text-align:center;
 padding:40px;
@@ -22,29 +24,45 @@ margin:auto;
 box-shadow:0 10px 25px rgba(0,0,0,0.1);
 }
 
+h2{
+margin-bottom:10px;
+}
+
 input{
 width:80%;
 padding:12px;
 margin-top:10px;
 border:1px solid #ccc;
-border-radius:8px;
+border-radius:6px;
+font-size:16px;
 }
 
 button{
 margin-top:15px;
 padding:12px 20px;
-background:#4CAF50;
+background:black;
 color:white;
 border:none;
-border-radius:8px;
+border-radius:6px;
 font-size:16px;
+cursor:pointer;
 }
 
-#result{
-margin-top:20px;
-white-space:pre-line;
+button:hover{
+background:#333;
 }
+
+.result{
+margin-top:20px;
+background:#eee;
+padding:15px;
+border-radius:6px;
+white-space:pre-line;
+text-align:left;
+}
+
 </style>
+
 </head>
 
 <body>
@@ -53,7 +71,7 @@ white-space:pre-line;
 
 <h2>AI美食海报生成器</h2>
 
-<p>输入菜名生成AI图片提示词</p>
+<p>输入菜名生成 AI 菜单 Prompt</p>
 
 <input id="dish" placeholder="例如：宫保鸡丁">
 
@@ -61,7 +79,7 @@ white-space:pre-line;
 
 <button onclick="generate()">生成</button>
 
-<div id="result"></div>
+<div class="result" id="result"></div>
 
 </div>
 
@@ -69,26 +87,42 @@ white-space:pre-line;
 
 function generate(){
 
-let dish=document.getElementById("dish").value
+let dish=document.getElementById("dish").value;
 
-let calories=Math.floor(Math.random()*200+400)
+if(dish===""){
+alert("请输入菜名");
+return;
+}
 
-let allergy=["Soy","Gluten","Peanut","Egg","Shellfish"]
+let calories=Math.floor(Math.random()*200+400);
 
-let randomAllergy=allergy[Math.floor(Math.random()*allergy.length)]
+let allergy=["Soy","Gluten","Peanut","Egg","Shellfish"];
 
-let text=
-"菜名："+dish+
-"\n\n热量："+calories+" kcal"+
-"\n\n过敏源："+randomAllergy+
-"\n\nAI图片提示词："+
-"\nProfessional food photography of "+dish
+let randomAllergy=allergy[Math.floor(Math.random()*allergy.length)];
 
-document.getElementById("result").innerText=text
+let prompt=
+"菜名: "+dish+
+
+"\n\nEstimated Calories: "+calories+" kcal"+
+
+"\n\nAllergy: "+randomAllergy+
+
+"\n\nAI Image Prompt:"+
+
+"\nProfessional food photography of "+dish+", wooden table, steam rising from bowl, warm restaurant lighting, ultra realistic, 8k detail"+
+
+"\n\nExploded Ingredients Layout:"+
+
+"\nMain ingredient"+
+"\nGarlic"+
+"\nChili"+
+"\nSauce"+
+"\nGreen onion";
+
+document.getElementById("result").innerText=prompt;
 
 }
 
 </script>
 
 </body>
-</html>
