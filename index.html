@@ -1,103 +1,105 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>AI 菜品参考图</title>
 
 <style>
 
 body{
-background:#111;
+background:#000;
 color:white;
 font-family:Arial;
 text-align:center;
 padding:40px;
 }
 
-.container{
-max-width:600px;
-margin:auto;
+h1{
+font-size:42px;
+margin-bottom:10px;
+}
+
+p{
+color:#aaa;
+margin-bottom:30px;
 }
 
 input{
-width:90%;
-padding:14px;
+width:320px;
+padding:15px;
 font-size:18px;
 border-radius:8px;
 border:none;
-margin-top:10px;
+margin-bottom:20px;
 }
 
 button{
-margin-top:20px;
 background:#ffb300;
-color:black;
+border:none;
 padding:15px 30px;
 font-size:18px;
-border:none;
 border-radius:10px;
 cursor:pointer;
 }
 
-.grid{
-margin-top:30px;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:20px;
-}
-
-.grid img{
-width:100%;
-border-radius:10px;
+img{
+margin-top:40px;
+width:80%;
+max-width:700px;
+border-radius:12px;
 }
 
 </style>
-
 </head>
 
 <body>
 
-<div class="container">
-
 <h1>AI 菜品参考图</h1>
-
 <p>输入菜名生成食材参考图</p>
 
-<input id="dish" placeholder="例如：鱼香肉丝">
+<input id="dish" placeholder="例如：宫保鸡丁">
 
 <br>
 
-<button onclick="generate()">生成食材</button>
+<button onclick="showImage()">生成图片</button>
 
-<div class="grid" id="result"></div>
+<br>
 
-</div>
+<img id="result" style="display:none;">
 
 <script>
 
-function generate(){
+function showImage(){
 
-let ingredients=[
-"garlic",
-"chili",
-"ginger",
-"green onion",
-"soy sauce",
-"eggplant",
-"pork",
-"chicken"
-]
+let dish=document.getElementById("dish").value.trim()
 
-let html=""
+if(!dish){
+alert("请输入菜名")
+return
+}
 
-ingredients.forEach(i=>{
-html+=`<img src="https://source.unsplash.com/400x400/?${i},food">`
-})
+let map={
 
-document.getElementById("result").innerHTML=html
+"宫保鸡丁":"General two chicken.jpg",
+"锅包肉":"guobaorou.jpg",
+"麻婆豆腐":"mapodoufu.jpg",
+"鱼香茄子":"yuxiangqiezi.jpg"
+
+}
+
+let img=document.getElementById("result")
+
+if(map[dish]){
+
+img.src="/images/"+map[dish]
+
+}else{
+
+img.src="/images/General two chicken.jpg"
+
+}
+
+img.style.display="block"
 
 }
 
