@@ -58,7 +58,7 @@ border-radius:10px;
 
 <h1>AI 菜品参考图</h1>
 
-<p>输入菜名生成食材分层图</p>
+<p>输入菜名生成参考图</p>
 
 <input id="dish" placeholder="例如：宫保鸡丁">
 
@@ -74,26 +74,23 @@ border-radius:10px;
 
 function generate(){
 
-let dish = document.getElementById("dish").value
-
-document.getElementById("result").innerHTML="生成中..."
+let dish=document.getElementById("dish").value
 
 let prompt = `
-exploded view chinese dish ${dish},
+exploded ingredients chinese dish ${dish},
+black background food photography,
 ingredients floating in layers,
-top layer chili peppers,
-second layer garlic,
-third layer ginger,
-fourth layer main ingredient ${dish},
-bottom layer finished dish,
-black background food photography
+top chili,
+garlic,
+ginger,
+main ingredient ${dish},
+finished dish bottom
 `
 
-let imageURL =
-"https://pollinations.ai/p/" + encodeURIComponent(prompt)
+let url = "https://image.pollinations.ai/prompt/" + encodeURIComponent(prompt)
 
 document.getElementById("result").innerHTML =
-`<img src="${imageURL}">`
+'<img src="'+url+'" />'
 
 }
 
