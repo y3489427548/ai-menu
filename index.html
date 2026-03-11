@@ -3,82 +3,74 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI美食海报生成器</title>
+<title>AI餐厅海报生成器</title>
 
 <style>
 
 body{
-font-family: Arial, sans-serif;
-background:#f4f4f4;
+font-family:Arial;
+background:#111;
+color:white;
 text-align:center;
 padding:40px;
 }
 
 .container{
-background:white;
+background:#1c1c1c;
 padding:30px;
 border-radius:12px;
-max-width:420px;
+max-width:520px;
 margin:auto;
-box-shadow:0 10px 25px rgba(0,0,0,0.1);
-}
-
-h2{
-margin-bottom:10px;
 }
 
 input{
-width:80%;
+width:85%;
 padding:12px;
 margin-top:10px;
-border:1px solid #ccc;
-border-radius:6px;
-font-size:16px;
+border-radius:8px;
+border:none;
 }
 
 button{
 margin-top:15px;
 padding:12px 20px;
-background:black;
-color:white;
+background:#ffb300;
 border:none;
-border-radius:6px;
+border-radius:8px;
 font-size:16px;
-cursor:pointer;
 }
 
-button:hover{
-background:#333;
-}
-
-.result{
-margin-top:20px;
-background:#eee;
-padding:15px;
-border-radius:6px;
-white-space:pre-line;
+#result{
+margin-top:25px;
 text-align:left;
+white-space:pre-line;
+background:#000;
+padding:20px;
+border-radius:10px;
 }
 
 </style>
-
 </head>
 
 <body>
 
 <div class="container">
 
-<h2>AI美食海报生成器</h2>
+<h2>🍜 AI餐厅海报 Prompt 生成器</h2>
 
-<p>输入菜名生成 AI 菜单 Prompt</p>
+<p>输入菜名和餐馆名字</p>
 
-<input id="dish" placeholder="例如：宫保鸡丁">
+<input id="dish" placeholder="菜名：宫保鸡丁">
 
 <br>
 
-<button onclick="generate()">生成</button>
+<input id="restaurant" placeholder="餐馆：川越居">
 
-<div class="result" id="result"></div>
+<br>
+
+<button onclick="generate()">生成AI海报Prompt</button>
+
+<div id="result"></div>
 
 </div>
 
@@ -86,42 +78,45 @@ text-align:left;
 
 function generate(){
 
-let dish=document.getElementById("dish").value;
+let dish=document.getElementById("dish").value
+let restaurant=document.getElementById("restaurant").value
 
-if(dish===""){
-alert("请输入菜名");
-return;
-}
-
-let calories=Math.floor(Math.random()*200+400);
-
-let allergy=["Soy","Gluten","Peanut","Egg","Shellfish"];
-
-let randomAllergy=allergy[Math.floor(Math.random()*allergy.length)];
+let calories=Math.floor(Math.random()*200+450)
 
 let prompt=
-"菜名: "+dish+
 
-"\n\nEstimated Calories: "+calories+" kcal"+
+"High-end Chinese food poster\n\n"+
+"Restaurant: "+restaurant+"\n\n"+
 
-"\n\nAllergy: "+randomAllergy+
+"Dish: "+dish+"\n\n"+
 
-"\n\nAI Image Prompt:"+
+"Black background commercial food photography\n"+
+"45-degree exploded ingredient layout\n"+
+"ultra realistic 8k food magazine lighting\n\n"+
 
-"\nProfessional food photography of "+dish+", wooden table, steam rising from bowl, warm restaurant lighting, ultra realistic, 8k detail"+
+"Ingredient Layers:\n"+
+"Top: dried chili peppers\n"+
+"Second: garlic slices\n"+
+"Third: ginger slices\n"+
+"Fourth: crispy chicken pieces\n"+
+"Fifth: sweet soy chili sauce\n\n"+
 
-"\n\nExploded Ingredients Layout:"+
+"Bottom: finished dish "+dish+" in ceramic bowl with steam\n\n"+
 
-"\nMain ingredient"+
-"\nGarlic"+
-"\nChili"+
-"\nSauce"+
-"\nGreen onion";
+"Nutrition:\n"+
+calories+" kcal\n\n"+
 
-document.getElementById("result").innerText=prompt;
+"Allergy:\nsoy · gluten · egg\n\n"+
+
+"Chinese English labels\n"+
+"restaurant branding design\n"+
+"luxury Chinese restaurant poster"
+
+document.getElementById("result").innerText=prompt
 
 }
 
 </script>
 
 </body>
+</html>
