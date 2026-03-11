@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>AI 菜品参考图</title>
 
 <style>
@@ -18,10 +20,6 @@ padding:40px;
 .container{
 max-width:520px;
 margin:auto;
-}
-
-h1{
-margin-bottom:20px;
 }
 
 input{
@@ -74,18 +72,28 @@ border-radius:10px;
 
 <script>
 
-async function generate(){
+function generate(){
 
-let dish=document.getElementById("dish").value
+let dish = document.getElementById("dish").value
 
 document.getElementById("result").innerHTML="生成中..."
 
-let res=await fetch(`/api/generate?dish=${dish}`)
+let prompt = `
+exploded view chinese dish ${dish},
+ingredients floating in layers,
+top layer chili peppers,
+second layer garlic,
+third layer ginger,
+fourth layer main ingredient ${dish},
+bottom layer finished dish,
+black background food photography
+`
 
-let data=await res.json()
+let imageURL =
+"https://pollinations.ai/p/" + encodeURIComponent(prompt)
 
-document.getElementById("result").innerHTML=
-`<img src="${data.image}">`
+document.getElementById("result").innerHTML =
+`<img src="${imageURL}">`
 
 }
 
